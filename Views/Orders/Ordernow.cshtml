@@ -1,0 +1,39 @@
+﻿@model IEnumerable<OnlineSweetShop1.Models.Order>
+
+@{
+    ViewData["Title"] = "Ordernow";
+}
+
+<h1>Ordernow</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.orderName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paymentmode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.orderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.paymentmode)
+            </td>
+            <td>
+                <a asp-controller="Home" asp-action="confirmorder" asp-route-id="@item.orderId">confirmorder</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
